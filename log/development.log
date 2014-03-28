@@ -1,0 +1,1748 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (9.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (6.2ms)[0m   SELECT DISTINCT i.relname, d.indisunique, d.indkey, t.oid, am.amname
+ FROM pg_class t, pg_class i, pg_index d, pg_am am
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('public') )
+ AND i.relam = am.oid
+ ORDER BY i.relname
+
+  [1m[36m (5.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (19.4ms)[0m  SELECT * FROM geometry_columns WHERE f_table_name='schema_migrations'
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (17.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "hstore"
+HINT:  Must be superuser to create this extension.
+: CREATE EXTENSION IF NOT EXISTS hstore
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT * FROM geometry_columns WHERE f_table_name='schema_migrations'[0m
+PG::UndefinedTable: ERROR:  relation "geometry_columns" does not exist
+LINE 1: SELECT * FROM geometry_columns WHERE f_table_name='schema_mi...
+                      ^
+: SELECT * FROM geometry_columns WHERE f_table_name='schema_migrations'
+Connecting to database specified by database.yml
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.9ms)[0m   SELECT DISTINCT i.relname, d.indisunique, d.indkey, t.oid, am.amname
+ FROM pg_class t, pg_class i, pg_index d, pg_am am
+ WHERE i.relkind = 'i'
+ AND d.indexrelid = i.oid
+ AND d.indisprimary = 'f'
+ AND t.oid = d.indrelid
+ AND t.relname = 'schema_migrations'
+ AND i.relnamespace IN (SELECT oid FROM pg_namespace WHERE nspname IN ('public') )
+ AND i.relam = am.oid
+ ORDER BY i.relname
+
+  [1m[36m (11.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (4.1ms)[0m  SELECT * FROM geometry_columns WHERE f_table_name='schema_migrations'
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (1.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "hstore"
+HINT:  Must be superuser to create this extension.
+: CREATE EXTENSION IF NOT EXISTS hstore
+  [1m[35m (0.5ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (42.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (11.5ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (0.8ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (6.6ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (38.8ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+Migrating to CreateApps (20140317154234)
+Migrating to CreateDataPoints (20140317154402)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (10.3ms)[0m  [1mCREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  SELECT version FROM schema_migrations ORDER BY version
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (9.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (27.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (17.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (13.0ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (4.2ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (4.2ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+Migrating to CreateApps (20140317154234)
+Migrating to CreateDataPoints (20140317154402)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (10.8ms)[0m  [1mCREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "app_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')
+  [1m[36m (4.5ms)[0m  [1mCOMMIT[0m
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  SELECT version FROM schema_migrations ORDER BY version
+Connecting to database specified by database.yml
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (9.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (15.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (4.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (10.1ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (4.9ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (9.9ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (10.3ms)[0m  CREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "app_id" integer, "created_on" timestamp) 
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')[0m
+  [1m[35m (5.2ms)[0m  COMMIT
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.4ms)[0m  CREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (1.0ms)[0m  [1mSELECT version FROM schema_migrations ORDER BY version[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (6.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (15.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (23.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (4.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (2.7ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (4.0ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (11.7ms)[0m  CREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "app_id" integer, "created_at" timestamp) 
+  [1m[36m (3.5ms)[0m  [1mCREATE INDEX "index_data_points_on_app_id" ON "data_points" ("app_id")[0m
+  [1m[35m (3.5ms)[0m  CREATE INDEX "index_data_points_on_created_at" ON "data_points" ("created_at")
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')[0m
+  [1m[35m (2.8ms)[0m  COMMIT
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.3ms)[0m  CREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')[0m
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (1.1ms)[0m  [1mSELECT version FROM schema_migrations ORDER BY version[0m
+Connecting to database specified by database.yml
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.652585
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.378317
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.832136
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM "data_points" WHERE (app_id = 1 and created_at > '2014-03-17 16:34:03.976865')
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.79045
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:06:06 IST +05:30], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:08:29 +0530
+Connecting to database specified by database.yml
+
+ActionController::RoutingError (uninitialized constant DataPointsControllerController):
+  activesupport (3.2.11) lib/active_support/inflector/methods.rb:230:in `block in constantize'
+  activesupport (3.2.11) lib/active_support/inflector/methods.rb:229:in `each'
+  activesupport (3.2.11) lib/active_support/inflector/methods.rb:229:in `constantize'
+  actionpack (3.2.11) lib/action_dispatch/routing/route_set.rb:69:in `controller_reference'
+  actionpack (3.2.11) lib/action_dispatch/routing/route_set.rb:54:in `controller'
+  actionpack (3.2.11) lib/action_dispatch/routing/route_set.rb:32:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.11) lib/action_dispatch/routing/route_set.rb:601:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.11) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.11) lib/active_support/callbacks.rb:405:in `_run__748254007347136445__call__3634409215916392941__callbacks'
+  activesupport (3.2.11) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.11) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.11) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.11) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:08:48 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (12.0ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (2.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:38:49.122758' and '2014-03-17 16:38:49.126144')
+Completed 500 Internal Server Error in 134ms
+
+NoMethodError (undefined method `incremental_rating' for #<DataPoint:0x007fbd7c34c3f8>):
+  app/controllers/data_points_controller.rb:13:in `block in index'
+  app/controllers/data_points_controller.rb:9:in `index'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.6ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (23.0ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.9ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mEXPLAIN (0.4ms)[0m  EXPLAIN SELECT "apps".* FROM "apps" 
+EXPLAIN for: SELECT "apps".* FROM "apps" 
+                       QUERY PLAN
+---------------------------------------------------------
+ Seq Scan on apps  (cost=0.00..10.70 rows=70 width=1036)
+(1 row)
+
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM "data_points" WHERE (app_id = 1 and created_at > '2014-03-17 16:37:07.780955')[0m
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.2651810000000001
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "data_points" ("app_id", "created_at", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:09:09 IST +05:30], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[35m (1.1ms)[0m  COMMIT
+Connecting to database specified by database.yml
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (12.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (27.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (4.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (10.8ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (6.5ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (4.7ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (16.4ms)[0m  CREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "app_id" integer, "incremental_rating" float, "created_at" timestamp) 
+  [1m[36m (3.5ms)[0m  [1mCREATE INDEX "index_data_points_on_app_id" ON "data_points" ("app_id")[0m
+  [1m[35m (5.2ms)[0m  CREATE INDEX "index_data_points_on_created_at" ON "data_points" ("created_at")
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')[0m
+  [1m[35m (3.4ms)[0m  COMMIT
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.2ms)[0m  CREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')[0m
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM schema_migrations ORDER BY version[0m
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:10:18 +0530
+Connecting to database specified by database.yml
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (10.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 404 Not Found in 82ms
+
+ActiveRecord::RecordNotFound (Couldn't find App with id=1):
+  app/controllers/data_points_controller.rb:5:in `index'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:10:20 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[35mApp Load (0.6ms)[0m  SELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 404 Not Found in 5ms
+
+ActiveRecord::RecordNotFound (Couldn't find App with id=1):
+  app/controllers/data_points_controller.rb:5:in `index'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.9ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:10:42 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:40:42.730030' and '2014-03-17 16:40:42.732578')
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:13 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:13.883733' and '2014-03-17 16:41:13.883918')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:14 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:14.492364' and '2014-03-17 16:41:14.493089')
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:14 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:14.712506' and '2014-03-17 16:41:14.712672')
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:14 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:14.929332' and '2014-03-17 16:41:14.929503')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:15 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.2ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:15.156458' and '2014-03-17 16:41:15.156622')
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:31 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:31.509751' and '2014-03-17 16:41:31.509930')
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:32 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:32.065788' and '2014-03-17 16:41:32.065955')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:36 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:36.227786' and '2014-03-17 16:41:36.228228')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:36 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:36.599987' and '2014-03-17 16:41:36.600420')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:36 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:36.862562' and '2014-03-17 16:41:36.863004')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:40 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:40.068672' and '2014-03-17 16:41:40.069111')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:40 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:40.370021' and '2014-03-17 16:41:40.370473')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:40 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:40.585637' and '2014-03-17 16:41:40.586081')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:40 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:40.779721' and '2014-03-17 16:41:40.780171')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:40 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:40.972783' and '2014-03-17 16:41:40.973206')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:41 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:41.241176' and '2014-03-17 16:41:41.241608')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:41 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:41.452338' and '2014-03-17 16:41:41.452824')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:44 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.8ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:44.594302' and '2014-03-17 16:41:44.594747')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:44 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:44.929595' and '2014-03-17 16:41:44.930258')
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:45 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:45.192665' and '2014-03-17 16:41:45.192834')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:45 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:45.424655' and '2014-03-17 16:41:45.424828')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:45 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:45.660426' and '2014-03-17 16:41:45.660608')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:45 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:45.878803' and '2014-03-17 16:41:45.879247')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:46 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:46.057746' and '2014-03-17 16:41:46.057908')
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:46 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:46.290061' and '2014-03-17 16:41:46.290495')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:46 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:46.572334' and '2014-03-17 16:41:46.572523')
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:46 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:46.873296' and '2014-03-17 16:41:46.873507')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:47 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:47.197471' and '2014-03-17 16:41:47.197904')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:47 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:47.494294' and '2014-03-17 16:41:47.494466')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:47 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:47.810035' and '2014-03-17 16:41:47.810209')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:48 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:48.109751' and '2014-03-17 16:41:48.109920')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:48 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:48.429908' and '2014-03-17 16:41:48.430074')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:48 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:48.911993' and '2014-03-17 16:41:48.912170')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:49 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:49.341747' and '2014-03-17 16:41:49.341922')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:51 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.8ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:51.121793' and '2014-03-17 16:41:51.122217')
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:51 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:51.505392' and '2014-03-17 16:41:51.505850')
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:51 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:51.800567' and '2014-03-17 16:41:51.801029')
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:11:52 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.6ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:41:52.059099' and '2014-03-17 16:41:52.059272')
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35m (1.8ms)[0m  SELECT COUNT(*) FROM "data_points" WHERE (app_id = 1 and created_at > '2014-03-17 16:41:14.067970')
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.638219
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:12:04 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1/data_points" for 127.0.0.1 at 2014-03-17 22:12:55 +0530
+Processing by DataPointsController#index as HTML
+  Parameters: {"app_id"=>"1"}
+  [1m[36mApp Load (0.2ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDataPoint Load (0.8ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 16:42:55.260256' and '2014-03-17 16:42:55.260417')
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35m (1.8ms)[0m  SELECT COUNT(*) FROM "data_points" WHERE (app_id = 1 and created_at > '2014-03-17 16:42:14.737889')
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6593439999999999
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:13:05 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.7ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.651808
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:15:05 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (2.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.553864
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:16:05 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.100408
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (23.5ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:17:05 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.577565
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.623693
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:18:04 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.543326
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "incremental_rating", "installs", "price", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:19:05 IST +05:30], ["incremental_rating", nil], ["installs", "500 - 1,000"], ["price", 0.0], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6320490000000001
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.5630299999999999
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.3ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.604274
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.657851
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.593467
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.760553
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.689217
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.638756
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.7ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.802434
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.64779
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.656161
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.565031
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=2.038716
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.58443
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.5540769999999999
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.012201
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+Connecting to database specified by database.yml
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.908652
+Connecting to database specified by database.yml
+  [1m[36m (8.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (11.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to SetupHstore (20140317154153)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (24.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS hstore[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140317154153')
+  [1m[36m (4.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateApps (20140317154234)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (10.9ms)[0m  [1mCREATE TABLE "apps" ("id" serial primary key, "play_store_id" character varying(255), "name" character varying(255)) [0m
+  [1m[35m (5.3ms)[0m  CREATE INDEX "index_apps_on_play_store_id" ON "apps" ("play_store_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154234')[0m
+  [1m[35m (5.6ms)[0m  COMMIT
+Migrating to CreateDataPoints (20140317154402)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (10.0ms)[0m  CREATE TABLE "data_points" ("id" serial primary key, "installs" character varying(255), "size" float, "price" float, "rating_distribution" hstore, "app_id" integer, "rating" float, "num_of_ratings" integer, "created_at" timestamp) 
+  [1m[36m (7.4ms)[0m  [1mCREATE INDEX "index_data_points_on_app_id" ON "data_points" ("app_id")[0m
+  [1m[35m (4.9ms)[0m  CREATE INDEX "index_data_points_on_created_at" ON "data_points" ("created_at")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154402')[0m
+  [1m[35m (5.9ms)[0m  COMMIT
+Migrating to IndexDataPointsRatingDistribution (20140317154904)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  CREATE INDEX data_points_rating_distribution ON data_points USING GIN(rating_distribution)
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20140317154904')[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM schema_migrations ORDER BY version[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (2.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.566063
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:43:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.589977
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:44:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.553527
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:45:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.564384
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:46:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.606201
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:48:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.561477
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:49:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6374139999999999
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:50:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.563715
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (12.0ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:51:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.547178
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:52:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6642520000000001
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:53:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:53:48 +0530
+Connecting to database specified by database.yml
+Processing by AppsController#show as HTML
+  Parameters: {"app_id"=>"1"}
+Completed 500 Internal Server Error in 1ms
+
+NameError (undefined local variable or method `id' for #<AppsController:0x000000039fdcd0>):
+  app/controllers/apps_controller.rb:7:in `show'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (18.7ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (27.2ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.671492
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:54:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:54:10 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:24:10.171066' and '2014-03-17 17:24:10.172320')
+  Rendered apps/show.html.erb within layouts/application (1.3ms)
+Compiled application.css  (0ms)  (pid 13175)
+Compiled jquery.js  (3ms)  (pid 13175)
+Compiled jquery_ujs.js  (0ms)  (pid 13175)
+Compiled application.js  (81ms)  (pid 13175)
+Completed 200 OK in 190ms (Views: 101.4ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:10 +0530
+Served asset /application.js - 200 OK (33ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:10 +0530
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:54:10 +0530
+Served asset /application.css - 200 OK (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:10 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:54:19 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:24:19.163552' and '2014-03-17 17:24:19.164138')
+  Rendered apps/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 16ms (Views: 4.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:54:19 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:19 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:19 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:19 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:54:57 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:24:57.189454' and '2014-03-17 17:24:57.189636')
+  Rendered apps/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 17ms (Views: 7.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:54:57 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:57 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:57 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:54:57 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.561653
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:55:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.889038
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:56:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.63827
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:57:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.546995
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:58:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (3.7ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:59:02 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:29:02.586337' and '2014-03-17 17:29:02.586895')
+  Rendered apps/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 15ms (Views: 6.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:59:02 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:02 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:02 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:02 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.649437
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.9ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 22:59:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:59:06 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:29:06.870496' and '2014-03-17 17:29:06.871075')
+  Rendered apps/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 19ms (Views: 7.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:06 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:06 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:59:06 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:06 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:59:12 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:29:12.960512' and '2014-03-17 17:29:12.960769')
+  Rendered apps/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 12ms (Views: 4.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:59:12 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:12 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:12 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:12 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:59:49 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:29:49.929565' and '2014-03-17 17:29:49.930024')
+  Rendered apps/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 23ms (Views: 11.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 22:59:51 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (2.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.7ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:29:51.407161' and '2014-03-17 17:29:51.407748')
+  Rendered apps/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 18ms (Views: 3.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 22:59:51 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:51 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:51 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 22:59:51 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6107819999999999
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:00:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:00:25 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:30:25.155250' and '2014-03-17 17:30:25.156959')
+  Rendered apps/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 3.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:00:25 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:25 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:25 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:25 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:00:32 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:30:32.520792' and '2014-03-17 17:30:32.520969')
+  Rendered apps/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 12ms (Views: 5.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:00:32 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:32 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:32 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:00:32 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.607221
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (12.1ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:01:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:01:25 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:31:25.560314' and '2014-03-17 17:31:25.560627')
+  Rendered apps/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 16ms (Views: 4.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:01:25 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:01:25 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:01:25 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:01:25 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.1ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.721633
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:02:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:02:47 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.5ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.8ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:32:47.571328' and '2014-03-17 17:32:47.571611')
+  Rendered apps/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 13ms (Views: 4.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:02:47 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:02:47 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:02:47 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:02:47 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.733078
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:03:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:03:12 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.7ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:33:12.358784' and '2014-03-17 17:33:12.358990')
+  Rendered apps/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 10ms (Views: 4.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:03:12 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:03:12 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:03:12 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:03:12 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (2.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.551911
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.9ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:04:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.661945
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:05:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.5901970000000001
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:06:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:06:11 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.8ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.7ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:36:11.617834' and '2014-03-17 17:36:11.618062')
+  Rendered apps/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 14ms (Views: 4.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:06:11 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:11 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:11 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:11 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:06:17 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.8ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:36:17.916778' and '2014-03-17 17:36:17.917012')
+  Rendered apps/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 11ms (Views: 4.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:06:17 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:17 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:17 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:06:17 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.786001
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:07:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (2.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.676525
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:08:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (101.5ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:08:09 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:38:09.660246' and '2014-03-17 17:38:09.660465')
+  Rendered apps/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 10ms (Views: 4.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:08:09 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:09 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:09 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:09 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:08:30 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.3ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.9ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:38:30.280086' and '2014-03-17 17:38:30.280709')
+  Rendered apps/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 13ms (Views: 4.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:30 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:08:30 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:30 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:08:30 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.567353
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:09:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (1.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.617815
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:10:04 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:10:19 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.6ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:40:19.724613' and '2014-03-17 17:40:19.724862')
+  Rendered apps/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:19 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:19 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:19 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:10:19 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:10:56 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (0.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-03-12 17:40:56.625932' and '2014-03-17 17:40:56.626734')
+  Rendered apps/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:10:56 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:56 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:56 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:10:56 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.562457
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.7ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:11:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-17 23:11:10 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (0.9ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  [1m[35mDataPoint Load (1.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 1 and created_at between '2014-01-26 17:41:10.960013' and '2014-03-17 17:41:10.960676')
+  Rendered apps/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 64ms (Views: 7.5ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:11:11 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:11:11 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:11:11 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:11:11 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.0ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.6155360000000001
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 1], ["created_at", Mon, 17 Mar 2014 23:12:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (0.4ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (3.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 1 ORDER BY created_at DESC LIMIT 1
+
+
+Started GET "/apps/2" for 127.0.0.1 at 2014-03-17 23:14:16 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mApp Load (0.7ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  [1m[35mDataPoint Load (1.4ms)[0m  SELECT "data_points".* FROM "data_points" WHERE (app_id = 2 and created_at between '2014-03-12 17:44:16.120243' and '2014-03-17 17:44:16.120486')
+  Rendered apps/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 26ms (Views: 3.3ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-17 23:14:16 +0530
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-17 23:14:16 +0530
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-17 23:14:16 +0530
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-17 23:14:16 +0530
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+  [1m[36mApp Load (1.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (2.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 2 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.712575
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (25.0ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 2], ["created_at", Tue, 18 Mar 2014 00:00:05 IST +05:30], ["installs", "500 - 1,000"], ["num_of_ratings", 451], ["price", 0.0], ["rating", 4.933481152993348], ["rating_distribution", "\"5\"=>\"432\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (11.9ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (41.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 2 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=1.904401
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (33.8ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 2], ["created_at", Wed, 19 Mar 2014 00:00:07 IST +05:30], ["installs", "1,000 - 5,000"], ["num_of_ratings", 454], ["price", 0.0], ["rating", 4.933920704845815], ["rating_distribution", "\"5\"=>\"435\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"2\""], ["size", 2.8]]
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (12.2ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (62.3ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 2 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.786673
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (83.0ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 2], ["created_at", Thu, 20 Mar 2014 00:00:06 IST +05:30], ["installs", "1,000 - 5,000"], ["num_of_ratings", 455], ["price", 0.0], ["rating", 4.942857142857143], ["rating_distribution", "\"5\"=>\"437\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"1\""], ["size", 2.8]]
+  [1m[36m (3.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (10.1ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (44.5ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 2 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.7261219999999999
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (67.4ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 2], ["created_at", Fri, 21 Mar 2014 00:00:06 IST +05:30], ["installs", "1,000 - 5,000"], ["num_of_ratings", 457], ["price", 0.0], ["rating", 4.9431072210065645], ["rating_distribution", "\"5\"=>\"439\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"1\""], ["size", 2.8]]
+  [1m[36m (4.6ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+  [1m[36mApp Load (12.0ms)[0m  [1mSELECT "apps".* FROM "apps" [0m
+  [1m[35mDataPoint Load (36.2ms)[0m  SELECT "data_points".* FROM "data_points" WHERE "data_points"."app_id" = 2 ORDER BY created_at DESC LIMIT 1
+ETHON: Libcurl initialized
+ETHON: performed EASY url= response_code=200 return_code=ok total_time=0.81082
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (42.9ms)[0m  INSERT INTO "data_points" ("app_id", "created_at", "installs", "num_of_ratings", "price", "rating", "rating_distribution", "size") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["app_id", 2], ["created_at", Tue, 25 Mar 2014 00:00:06 IST +05:30], ["installs", "1,000 - 5,000"], ["num_of_ratings", 461], ["price", 0.0], ["rating", 4.943600867678959], ["rating_distribution", "\"5\"=>\"443\",\"4\"=>\"14\",\"3\"=>\"1\",\"2\"=>\"2\",\"1\"=>\"1\""], ["size", 2.8]]
+  [1m[36m (4.2ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2014-03-27 14:42:42 +0530
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (10ms)
+
+
+Started GET "/apps" for 127.0.0.1 at 2014-03-27 14:42:46 +0530
+Processing by AppsController#index as HTML
+  Rendered apps/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 95ms (Views: 94.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-27 14:42:46 +0530
+Served asset /application.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-27 14:42:46 +0530
+Served asset /jquery.js - 200 OK (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-27 14:42:46 +0530
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-27 14:42:46 +0530
+Served asset /application.js - 200 OK (3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/apps?id=1" for 127.0.0.1 at 2014-03-27 14:43:05 +0530
+Processing by AppsController#index as HTML
+  Parameters: {"id"=>"1"}
+  Rendered apps/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/app/1" for 127.0.0.1 at 2014-03-27 14:43:07 +0530
+
+ActionController::RoutingError (No route matches [GET] "/app/1"):
+  actionpack (3.2.11) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.11) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.11) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.11) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.11) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.11) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.11) lib/rails/engine.rb:479:in `call'
+  railties (3.2.11) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.11) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/sgoyal/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/apps/1" for 127.0.0.1 at 2014-03-27 14:43:10 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mApp Load (16.1ms)[0m  [1mSELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+Completed 404 Not Found in 503ms
+
+ActiveRecord::RecordNotFound (Couldn't find App with id=1):
+  app/controllers/apps_controller.rb:7:in `show'
+
+
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /home/sgoyal/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.0ms)
+
+
+Started GET "/apps/2" for 127.0.0.1 at 2014-03-27 14:43:11 +0530
+Processing by AppsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mApp Load (0.4ms)[0m  SELECT "apps".* FROM "apps" WHERE "apps"."id" = $1 LIMIT 1  [["id", "2"]]
+  [1m[36mDataPoint Load (40.9ms)[0m  [1mSELECT "data_points".* FROM "data_points" WHERE (app_id = 2 and created_at between '2014-03-22 09:13:11.995599' and '2014-03-27 09:13:12.037107')[0m
+  Rendered apps/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 149ms (Views: 3.7ms | ActiveRecord: 47.6ms)

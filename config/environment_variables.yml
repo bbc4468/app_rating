@@ -1,0 +1,17 @@
+POSTGRES_DB_HOST: "localhost"
+POSTGRES_DB_USER: "geo_rails_test"
+POSTGRES_DB_PASSWORD: "123456"
+POSTGRES_DB_SU_USER: "geo_rails_test_creator"
+POSTGRES_DB_SU_PASSWORD: "123456"
+
+resque_password: secret
+
+
+development:
+  POSTGRES_DB_NAME: "app_rating_development"
+
+test:
+  POSTGRES_DB_NAME: "app_rating_test"
+
+production:
+  POSTGRES_DB_NAME: "app_rating_production"
